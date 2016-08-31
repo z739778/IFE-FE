@@ -1,0 +1,31 @@
+@mixin resetStyle{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+@mixin flexboxStyle($width,$height){
+	display:flex;
+	flex-direction:row;
+	padding:15px 10px;
+	margin:5px;
+	border:1px solid #000;
+	background-color:#fff;
+	width:$width;
+	height:$height;
+}
+@mixin flexitemStyle{
+
+}
+
+#wrapper{
+	@include flexboxStyle(730px,240px);
+}
+.layer_1{
+	@include flexboxStyle(340px,200px);
+}
+.layer_2{
+	@include flexboxStyle(135px,160px);
+}
+.layer_3{
+	@include flexboxStyle(52.5px,120px);
+}

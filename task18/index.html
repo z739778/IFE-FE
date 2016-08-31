@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <style>
+      .e-style {
+        background-color: red; 
+        color: #fff; 
+        margin-left: 10px; 
+      }
+    </style>
+  </head>
+<body>
+  <input type="text" id="data_input" />
+  <button onclick="addToQueue(false);">左侧入</button>
+  <button onclick="addToQueue(true);">右侧入</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button onclick="deleteFromQueue(false)">左侧出</button>
+  <button onclick="deleteFromQueue(true)">右侧出</button>  
+  <div id="array-view"></div>
+
+<script type="text/javascript">
+  var $ = function (id) {   return document.getElementById(id);  };
+  
+  var array = [];
+  
+  //validate the input, return its number value if valid,  NaN if not valid
+  function validateInput(){
+    var input = $("data_input").value;
+    if(input===""){
+      alert("input can not be empty!");
+      return NaN;
+    }else if(isNaN(input)){
+      alert("input should be a valid number!");
+      return NaN;
+    }else {
+      $("data_input").value = "";
+      return Number(input);
+    }
+  }
+
+  
+  function addToQueue(rightDir){
+    var num = validateInput();
+    if(isNaN(num)) return;
+    if(rightDir){
+      array.push(num);
+    } else {
+      array.unshift(num);
+    }
+    updateArrayView();
+  }
+  
+    
+  function deleteFromQueue(rightDir){
+    if(array.length===0){ alert("the queue is empty, no number can be out"); return; }
+    if(rightDir){
+      alert("the number " + array.pop() + " is out");
+    }else {
+      alert("the number " + array.shift() + " is out");
+    }
+    updateArrayView();
+  }
+  
+  function f1(index){
+    array.splice(index,1);
+    updateArrayView();
+  }
+  
+  //refresh the page view for all current elements of the array
+  //这里对view的更新是基于array的当前数据做全量更新，性能比较差，但无论数组做了何种变化，变化后只需统一调用这一个函数即可
+  //另一种办法是基于数组array做了何种增量变化，进而对view做出不同给的增量更新，性能会更好，但代码比较多
+  function updateArrayView(){
+    console.log("now refresh the view for array: " + array);
+    
+    $("array-view").innerHTML = array.map(function(e,i){return '<span class="e-style" onclick="f1(' + i+ ');">'+e+'</span>';}).join("");
+  }
+  
+(function() {
+  
+})();
+
+</script>
+</body>
+</html>

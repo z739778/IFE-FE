@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <style>
+      .e-style {
+        background-color: red; 
+        color: #fff; 
+        margin-left: 10px; 
+      }
+      #array-view {
+        margin-top: 30px;
+      }
+      
+      #data_input {
+        width: 200px; 
+        height: 80px;
+      }
+      #keyword_input {
+        width: 200px;
+      }
+      
+      .em-text {
+        background-color: yellow; 
+        color: black;
+      }
+    </style>
+  </head>
+<body>
+  <textarea id="data_input">ab,cd，ef gh　ij、kl
+mn	op</textarea>
+  <button onclick="addToQueue(false);">左侧入</button>
+  <button onclick="addToQueue(true);">右侧入</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button onclick="deleteFromQueue(false)">左侧出</button>
+  <button onclick="deleteFromQueue(true)">右侧出</button>  
+  <br />
+  <input type="text" id="keyword_input" />
+  <button onclick="query();">查询</button>
+  
+  <div id="array-view"></div>
+
+<script type="text/javascript">
+  var $ = function (id) {   return document.getElementById(id);  };
+      
+  var array = [];
+  
+  /* copy from task18, not used in this task
+  //validate the input, return its number value if valid,  NaN if not valid
+  function validateInput(){
+    var input = $("data_input").value;
+    if(input===""){
+      alert("input can not be empty!");
+      return NaN;
+    }else if(isNaN(input)){
+      alert("input should be a valid number!");
+      return NaN;
+    }else {
+      $("data_input").value = "";
+      return Number(input);
+    }
+  }
+  */
+
+  //parse the input string, get the non-empty content items, and return them in a string array
+  function parseInputToItems(){    
+    var ret = $("data_input").value
+                .split(/[,|，| |　|、|\r|\n|\t]/)  //分隔符可以是逗号（半角或全角）、空格（半角或全角）、顿号、回车、换行、Tab字符之一
+                .filter(function(e){return e.length>0;});  //去掉可能包含的空字符串            
+    return ret;
+  }
+  
+  function addToQueue(rightDir){
+    var inputItems = parseInputToItems();
+    if(rightDir){
+      array = array.concat(inputItems);
+    } else {
+      array = inputItems.concat(array);
+    }
+    updateArrayView();
+  }
+  
+    
+  function deleteFromQueue(rightDir){
+    if(array.length===0){ alert("the queue is empty, no number can be out"); return; }
+    if(rightDir){
+      alert("the number " + array.pop() + " is out");
+    }else {
+      alert("the number " + array.shift() + " is out");
+    }
+    updateArrayView();
+  }
+  
+  function f1(index){
+    /* copy from task18, not used in this task
+    array.splice(index,1);
+    updateArrayView();
+    */
+  }
+  
+  function query(){
+    updateArrayView();
+    
+    var keyword = $("keyword_input").value;
+    var spanList = $("array-view").children;
+    for(var i=0, str="";i<spanList.length;i++){
+          
+      /*  子串替换的方法一：先split再join，缺点是当忽略大小写时，最终突出显示的匹配子串都被替换成了输入的keyword，可能与本来的文本不一致；
+      spanList[i].innerHTML = spanList[i].innerHTML.split(new RegExp(keyword, "i")).join('<span class="em-text">'+keyword+"</span>")
+      */
+      
+      // 子串替换的方法二：使用强大的replace方法
+      spanList[i].innerHTML = spanList[i].innerHTML.replace(new RegExp(keyword, "gi"), '<span class="em-text">$&</span>');
+    }
+  }
+  
+  //refresh the page view for all current elements of the array
+  //这里对view的更新是基于array的当前数据做全量更新，性能比较差，但无论数组做了何种变化，变化后只需统一调用这一个函数即可
+  //另一种办法是基于数组array做了何种增量变化，进而对view做出不同给的增量更新，性能会更好，但代码比较多
+  function updateArrayView(){
+    console.log("now refresh the view for array: " + array);
+    
+    $("array-view").innerHTML = array.map(function(e,i){return '<span class="e-style" onclick="f1(' + i+ ');">'+e+'</span>';}).join("");
+  }
+  
+(function() {
+  
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  -webkit-user-select: none;
+  user-select: none; }
+
+#wrapper {
+  width: 100%;
+  height: 50%; }
+
+.container {
+  position: relative; }
+
+#caleSelect {
+  width: 160px;
+  height: 40px; }
+
+.container img {
+  width: 40px;
+  height: 40px; }
+
+/*# sourceMappingURL=task_3_41.css.map */

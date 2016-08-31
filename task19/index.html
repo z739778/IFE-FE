@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <style>
+      .e-style {        
+        position: absolute; 
+      }
+      #array-view {
+        text-align: center;
+        font-size: 30px; 
+        font-weight: bold;
+        color: #fff;
+        width: 100%; 
+        height: 400px; 
+        border-left: 2px solid #aaa; 
+        border-bottom: 2px solid #aaa; 
+        margin-top: 50px;
+        position: relative;
+      }
+    </style>
+  </head>
+<body>
+  <input type="text" id="data_input" placeholder="输入10-100之间的数值" />
+  <button onclick="addToQueue(false);">左侧入</button>
+  <button onclick="addToQueue(true);">右侧入</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button onclick="deleteFromQueue(false);">左侧出</button>
+  <button onclick="deleteFromQueue(true);">右侧出</button>    
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button onclick="randomPush();">随机右侧入5个数值</button>
+  <br />
+  <select id="swap-interval">
+    <option value="50">50毫秒</option>
+    <option value="100">100毫秒</option>
+    <option value="200" selected>200毫秒</option>
+    <option value="500">500毫秒</option>
+    <option value="1000">1000毫秒</option>
+    <option value="2000">2000毫秒</option>
+  </select>
+  <button onclick="sort();">冒泡排序</button>  
+  
+  <div id="array-view"></div>
+
+<script type="text/javascript">
+  var $ = function (id) {   return document.getElementById(id);  };
+  
+  var array = [];
+  
+  //validate the input, return its number value if valid,  NaN if not valid
+  function validateInput(){
+    var input = $("data_input").value;
+    if(input===""){
+      alert("input can not be empty!");
+      return NaN;
+    }else if(isNaN(input)){
+      alert("input should be a valid number!");
+      return NaN;
+    }else if(input<10 || input>100){
+      alert("input should be a valid number between [10,100]!");
+      return NaN;
+    }else {
+      $("data_input").value = "";
+      return Number(input);
+    }
+  }
+  
+  function addToQueue(rightDir){   
+    var num = validateInput();
+    if(isNaN(num)) return;
+    if(array.length>=60){ alert("the queue size is already reach the 60 max, can not add any more!");}
+    if(rightDir){
+      array.push(num);
+    } else {
+      array.unshift(num);
+    }
+    updateArrayView();
+  }  
+    
+  function deleteFromQueue(rightDir){
+    if(array.length===0){ alert("the queue is empty, no number can be out"); return; }
+    if(rightDir){
+      alert("the number " + array.pop() + " is out");
+    }else {
+      alert("the number " + array.shift() + " is out");
+    }
+    updateArrayView();
+  }
+  
+  function randomPush(){
+    //push 5次，每次在末尾插入一个10-100之间的随机整数
+    for(var i=0;i<5;i++){
+      array.push(Math.floor(91*Math.random()+10));             
+    }
+    updateArrayView();
+  } 
+  
+  var swapPositionQueue = [];
+  
+  //sort the array using the bubble sort algorithm
+  //for demo, try the array with 88,33,55,11
+  function sort(){
+    swapPositionQueue.length = 0;  //clear the swap position queue
+    
+    for(var j=array.length-1;j>=1;j--){
+      for(var i=0;i<=j-1;i++){
+        if(array[i] > array[i+1]){
+           //swapAndUpdateView(i,i+1);               //如果这个swap逻辑直接在此处被调用执行，则冒泡中包含的多次swap顺序执行中间无延时间隔，在极短的时间内全部执行完看不出中间每一次swap后的即时view变化
+           
+           swapPositionQueue.push({i: i, j: i+1});  //缓存需要交换的元素位置到队列，以便之后实际交换
+           
+           //完成array中此二元素值的交换
+           var temp = array[i];
+           array[i] = array[i+1];
+           array[i+1] = temp;           
+        }
+      }
+    }
+    
+    console.log("the bubble sort is finished, final array=" + array);
+    console.log("now, the each swap step will be shown in the view slowly by 2 seconds interval");
+    
+    var tid = setInterval(function(){
+      if(swapPositionQueue.length == 0){  //所有的位置都已交换，则结束这个定期执行的定时任务
+        console.log("finished all swap steps show in the view");
+        clearInterval(tid);
+        return;
+      }
+      var position = swapPositionQueue.shift();   //出队，然后进行对应View上对应方块的位置交换
+      updateArrayViewBySwap(position.i, position.j);
+      
+    }, Number($("swap-interval").value));
+    
+  }
+  
+  //swap the ith element and jth element in the array, and swap the position of rectangles for thes two element in the view
+  function swapAndUpdateView(i,j){
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp; 
+    
+    updateArrayViewBySwap(i,j);
+  }
+  
+  function f1(index){
+    array.splice(index,1);  //delete the index element from the array
+    updateArrayView();
+  }
+
+var helper = {
+  colors: ["#f00","#0f0","#00f","#0ff","#70000c","#30303a"],  
+  randomColor: function(){return this.colors[Math.floor(Math.random() * this.colors.length)];}   
+}
+  
+  //refresh the page view for all current elements of the array
+  //这里对view的更新是基于array的当前数据做全量更新，性能比较差，但无论数组做了何种变化，变化后只需统一调用这一个函数即可
+  //另一种办法是基于数组array做了何种增量变化，进而对view做出不同给的增量更新，性能会更好，但代码比较多
+  function updateArrayView(){
+    console.log("now refresh the view for array: " + array);
+    
+    $("array-view").innerHTML = "";
+    array.forEach(function(e,i){
+      var span = document.createElement("span");
+      span.innerHTML = e;
+      span.onclick = function(){ f1(i);};
+      span.id = "span-"+i;
+      span.className = "e-style";
+      span.style.width = 100/array.length + "%";
+      span.style.height = e*3 + "px";
+      span.style.left = i * 100/array.length + "%";
+      span.style.bottom = "0";
+      span.style.backgroundColor = helper.randomColor();
+      
+      $("array-view").appendChild(span);
+      });
+  }
+  
+  //通过交换array的第i个元素对应方块、array的第j个元素对应方块，来实现对View的更新
+  //对应2个方块的显示位置交换，对应的element id交换，但div#array-view的dom结构不变（即dom结构中每个span子元素顺序保持不变，但对应元素id记录下当前该span元素在view中位置编号）
+  function updateArrayViewBySwap(i,j){
+    console.log("now refresh the view， by swap the rectangle for array[" + i + "] and the ractangle for array[" + j + "]");
+    var spani = $("span-"+i);
+    var spanj = $("span-"+j);
+    
+    spani.id = "span-" + j;
+    spanj.id = "span-" + i;
+    
+    //step1: both stand out of the queue
+    spani.style.bottom = "";
+    spanj.style.bottom = "";
+    spani.style.top = "100%";
+    spanj.style.top = "100%";
+    
+    //step2: wait a while, swap the two's position
+    var temp = spani.style.left;
+    spani.style.left = spanj.style.left;
+    spanj.style.left = temp;
+      
+      
+    //step3: wait a while, make the two stand back into the queue and complete the final swap          
+    spani.style.top = "";
+    spanj.style.top = "";
+    spani.style.bottom = "0";
+    spanj.style.bottom = "0";
+    
+  }
+  
+(function() {
+  
+})();
+
+</script>
+</body>
+</html>

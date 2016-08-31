@@ -1,0 +1,47 @@
+@mixin resetStyle{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+@mixin flexboxStyle{
+	display:flex;
+	margin:5px;
+	flex-direction:row;
+	justify-content:flex-start;
+	align-items:center;
+	border:1px solid #000;
+	background-color:#fff;
+}
+@mixin flexitemStyle{
+	flex-grow:1;
+}
+
+#wrapper{
+	@include flexboxStyle;
+}
+@for $i from 1 through 5{
+	.layer_#{$i}{
+		@include flexboxStyle;
+		@include flexitemStyle;
+	}
+}
+
+.layer_1{
+	width:1800px;
+	height:300px;
+}
+.layer_2:nth-child(1){
+	width:600px;
+	height:200px;
+}
+.layer_2:nth-child(2){
+	width:1150px;
+	height:200px;
+}
+.layer_3{
+	width:500px;
+	height:100px;
+}
+.layer_4{
+	width:50px;
+}

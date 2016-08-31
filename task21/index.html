@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <style>
+      * {margin: 0; padding: 0;}
+      body {font: 16px "Microsoft YaHei",sans-serif; padding-top: 20px; }
+      input,textarea {box-sizing: border-box; width: 300px; }
+      input,textarea,button {font: inherit; }
+      input {height: 1.4em;}
+      textarea {height: 6em;}
+      .input-tooltip {font-size: 0.5em; font-style: italic;}
+      .input-label {display: inline-block; width: 100px; text-align: right; }
+      #hobby-confirm-button {margin-left: 100px; }
+      
+      .label-container {margin: 20px 0 0 100px;}
+      .keyword {margin-right: 20px; border: 1px solid blue; border-radius: 5px; background-color: blue; color: #fff; padding: 5px; cursor: pointer; }
+      
+      .delete-icon {display: inline-block; width: 20px; height: 20px; border-radius: 50%;}
+      .delete-icon:hover {background-color: #ffb33b;}
+      
+    </style>
+  </head>
+<body>
+  <label class="input-label">我的标签：</label><input id="tag-input" type="text" />
+  <span class="input-tooltip">输入标签，以空格、逗号、回车来自动结束一个标签的输入（标签重复时不添加，并且最多添加5个标签，当到达5个时再添加会自动挤掉第一个标签）</span>
+  <div id="tag-container" class="label-container"></div>
+  <br>
+  <label class="input-label">我的爱好：</label><textarea id="hobby-textarea"></textarea>  
+  <span class="input-tooltip">输入多个爱好，分隔符可以是逗号（半角或全角）、空格（半角或全角）、顿号、回车、换行、Tab字符之一</span>
+  <br>
+  <button id="hobby-confirm-button">&nbsp;确认添加</button>
+  <div id="hobby-container" class="label-container"></div>
+  
+<script type="text/javascript">
+  var $ = function (id) {   return document.getElementById(id);  };
+
+  /* 指定当某个特定键（参数keyCodes为Number值）或某几个特定键之一（参数keyCodes为Array值）在元素element上按下并松开时，调用callback(event)进行处理
+    例子：
+    addKeyHandler(e,65,f1)  //当A键在e元素上按下并松开时（相当于当在e元素中输入a或A字符时），调用f1(event)处理
+    addKeyHandler(e,[65,66,67],f1)  //当A键或B键或C键在e元素上按下并松开时（相当于当在e元素中输入a/A或b/B或c/C字符时），调用f1(event)处理
+  */
+  function addKeyHandler(element,keyCodes,callback){
+    element.addEventListener("keyup", function(event){
+      if(((typeof(keyCodes) === "number") && (event.keyCode === keyCodes))
+          ||
+          (Array.isArray(keyCodes) && (keyCodes.indexOf(event.keyCode) >= 0))
+      ){
+        callback(event);
+      }
+    });
+  }
+  
+  
+  //去掉str开头和末尾可能存在的连续多个空白字符（空格、Tab等）、逗号字符，返回去掉后的新字符串
+  function trim(str){
+    return str.replace(/^[\s,]+/, "").replace(/[\s,]+$/,"");
+  }
+
+  /*
+        Constructor + Prototype方式定义新的类型FixedSizeQueue，可以容纳多个item的队列数据结构，2个特点
+            1. 其中每个item都不重复（加入已经存在的item时do nothing）
+            2. 传入的构造函数参数maxSize指定了可容纳的item最多个数（默认为10），当到达此最大个数时，最新加入的会自动把最先加入的挤出去
+  */
+  function FixedSizeQueue(maxSize){
+    this.queue = [];
+    if(typeof maxSize === "number"){
+      this.maxSize = maxSize;
+    } else {
+      this.maxSize = 10;
+    }
+  }
+  FixedSizeQueue.prototype = {
+    constructor: FixedSizeQueue,
+    contains: function(item){
+      return this.queue.indexOf(item) >= 0; 
+    },    
+    size: function(){
+      return this.queue.length;
+    },
+    push: function(item){
+      if(!this.contains(item)){
+        this.queue.push(item);
+        if(this.size() > this.maxSize){
+          this.queue.shift();
+        }
+      }
+    },
+    delete: function(item){
+      var index = this.queue.indexOf(item);
+      if(index>=0){
+        this.queue.splice(index,1);
+      }
+    },
+    items: function(){
+      return this.queue;
+    },
+    isFull: function(){
+      return this.size() >= this.maxSize;
+    }    
+  };
+  
+  
+  var tagList = new FixedSizeQueue(5);     //假设每个用户最多能有5个tag
+  var hobbyList = new FixedSizeQueue(4);   //假设每个用户最多能有4个hobby
+
+  
+  function addItemToViewAndPushToItsFixedSizeQueue(item, containerDiv, fixedSizeQueue){
+      var str = '<span class="keyword" data-item="' + item + '">' + item + '<em class="delete-icon" title="删除">\u00d7</em></span>';
+      containerDiv.insertAdjacentHTML("beforeend", str);
+      
+      containerDiv.lastChild.lastChild.addEventListener("click", function(event){
+          var item = this.parentNode.dataset.item;
+          fixedSizeQueue.delete(item);      //delete the item from the model fixedSizeQueue
+          this.parentNode.parentNode.removeChild(this.parentNode);  //delete the <span> for that item form the view
+      });   //bind item delete icon click handler
+      
+      if(fixedSizeQueue.isFull()){  
+        //已经到达最大item个数，则在view中要delete掉第一个item对应的span元素
+        containerDiv.removeChild(containerDiv.firstChild);        
+      }
+      fixedSizeQueue.push(item);
+  }
+
+      
+(function() {
+  
+  var tagInput = $("tag-input");
+  //当在tag input中按下并松开了空格键，逗号键，或回车键时，则对应特殊处理
+  addKeyHandler(tagInput, [32,188,13], function(event){
+    //console.log(event.type+": "+event.keyCode+": "+event.shiftKey);
+    var inputString = trim(tagInput.value); // delete the leading and ending space 
+    if(inputString !== "" && (!tagList.contains(inputString))){   //a valid tag, and not repeated
+      
+      addItemToViewAndPushToItsFixedSizeQueue(inputString, $("tag-container"), tagList);
+
+    }
+    tagInput.value = "";   //clear the tag input
+  });
+  
+  
+  var hobbyTextarea = $("hobby-textarea");
+  $("hobby-confirm-button").addEventListener("click", function(event){
+    hobbyTextarea.value.split(/[,， 　、\r\n\t]/).filter(function(e){ return (e!=="")&&(!hobbyList.contains(e));}).forEach(function(e){
+      
+      addItemToViewAndPushToItsFixedSizeQueue(e, $("hobby-container"), hobbyList);
+    });
+    
+    hobbyTextarea.value = ""; //clear the hobby input
+  });
+  
+})();
+
+</script>
+</body>
+</html>

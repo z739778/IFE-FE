@@ -1,0 +1,32 @@
+#month, #year {
+  display: inline-block;
+  width: 70px;
+  height: 30px;
+  margin: 5px; }
+
+.daySelect {
+  font-family: "Arial";
+  width: 214px; }
+
+.daySelect th, .daySelect td {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  padding: 5px;
+  text-align: center; }
+
+.currMonth:hover {
+  border-radius: 5px;
+  background-color: #0966a8;
+  color: #fff;
+  cursor: pointer; }
+
+.prevMonth, .nextMonth {
+  color: #ccc; }
+
+.currDate {
+  border-radius: 5px;
+  background-color: #ccc; }
+
+/*# sourceMappingURL=calender.css.map */
