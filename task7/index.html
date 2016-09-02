@@ -2,330 +2,236 @@
 <html>
 
 <head>
-	<meta charset="UTF-8" />
-	<title>baidu ife stage1-task1</title>
-	<link type="text/css" rel="stylesheet" href="css/common.css" />
-	<style type="text/css">
-		/* simply I put all css code internally here just for this single page*/
-		body {width: 100%; min-width: 1280px; font: 14px "黑体","SimSum",sans-serif; }
-		a {color: #000; text-decoration: none; }
-		
-		header {height: 57px; background-color: #fff; }
-		#logolink {display: inline-block; height: 57px; margin-left: 59px;}
-		#logolink span {margin-left: 11px; font-size: 21px; line-height: 57px;}		
-		header nav {width: 486px; font: 14px "Microsoft Yahei","SimSum",sans-serif; }
-		header nav ul {list-style-type: none; }
-		header nav li {display: inline-block; height: 57px; margin-right: 32px; }
-		header nav a {display: inline-block; height: 57px; line-height: 57px;  width: 65px; box-sizing: border-box; text-align: center; color: #787b83;}
-		header nav li:first-child a, header nav a:hover { border-bottom: 4px solid #e74f4d; color: #e74f4d; }
-		#loginlink {display: inline-block; height: 57px; margin-right: 67px; font: 14px "Microsoft Yahei","SimSum",sans-serif; }
-		#loginlink span {line-height: 57px; margin-left: 5px; color: #e74f4d;}
-		
-		
-		#sec1 {background: url('images/1.png') no-repeat; background-size: cover; height: 853px; position: relative; }
-		#sec1 div.musk-layer1 {width: 100%; height: 100%; background-color: #040000; opacity: 0.2; }
-		#sec1-content {position: absolute; left: 117px; top: 227px; color: #fff; font-family: "Microsoft YaHei","SimSum",sans-serif;}
-		#sec1-content p.sec1-text-style1 {font-size: 60px; line-height: 68px; margin-bottom: 16px; }
-		#sec1-content p.sec1-text-style2 {font-size: 21px; line-height: 28px; margin-left: 8px;}
-		#sec1-content p.sec1-text-style3 {font-size: 30px; margin: 65px 0 0 10px; width: 330px; height: 63px; background-color: #e74f4d; line-height: 63px; text-align: center; }
-		
-		#sec2 {height: 250px; background-color: #fff; }
-		#sec2 .sec2-div {width: 25%; float: left; text-align: center; margin-top: 44px; }
-		#sec2 .sec2-div p {margin-top: 46px; height: 52px; }
-		#sec2 .has-border p {border-left: 2px solid #aaaaaa; }
-		#sec2 .sec2-div p span {display: inline-block; width: 158px;}
-		
-		#sec3 {text-align: center; background-color: #ededec; padding: 89px 0 78px; }
-		#sec3 p {font-size: 53.59px; color: #323333; opacity: 0.5; margin-top: 38px; }
-		
-		#sec4 {height: 341px; background: url('images/2.png') no-repeat; background-size: cover; position: relative; }
-		div.musk-layer2 {width: 100%; height: 100%; background-color: #aa3533; opacity: 0.2; }
-		#sec4-content {width: 100%; height: 100%; position: absolute; left: 0; top: 0; text-align: center; padding-top: 53px;}
-		#sec4-p1 {font: 21px "Microsoft Yahei","SimSum",sans-serif; color: #fff;}
-		#sec4-p3 {font: 12px "Microsoft Yahei","SimSum",sans-serif; color: #fff; opacity: 0.8; }
-		#sec4-p2 {width: 31px; margin: 10px auto 20px; height: 1px; background-color: #fff; border-top: 1px solid #e8dfdc; border-bottom: 1px solid #e8dfdc;}
-		#sec4 form {margin-top: 52px; }
-		.spec-form-control1 {box-sizing: border-box; width: 236px; height: 36px; border: 0; padding: 6px 10px; font: 12px "Microsoft Yahei","SimSum",sans-serif; color:#a8aaaa;}
-		#sec4 input[type="submit"] {font: 14px "Microsoft Yahei","SimSum",sans-serif; background-color: #be4e48; color: #fff;}
-				
-		div.dropdown {width: 236px; height: 36px; position: relative; display: inline-block; margin-right: 29px; }
-		div.dropdown ul {box-sizing: border-box; width: 100%; background-color: #e4e3e5; text-align: left; position: absolute; left: 0; top: 100%; list-style-type: none;}
-		div.dropdown ul li {height: 27px; font: 12px/27px "Microsoft Yahei","SimSum",sans-serif; color:#323333; padding-left: 32px; }
-		div.dropdown ul li.active {background: url('images/2-1.png') #be4e48 no-repeat 9px 9px; color: #fff; }
-		#sec4 div.dropdown ul li:hover {background: url('images/2-1.png') #be4e48 no-repeat 9px 9px; color: #fff; }
-		
-		/*
-		#sec4 div.dropdown input:focus  {border: 2px solid #d99d8e;}
-		*/
-		.border-style1 {border: 2px solid #d99d8e;}
-		.border-style2 {border: 1px solid #d99d8e;}
-		div.dropdown span {display: inline-block; width: 19px; height: 18px; background: url('images/2-2.png') #be4e48 no-repeat 50%; position: absolute; right: 9px; top: 9px; }
-
-		#sec5 {background:#f7f7f7; padding: 100px 0 114px; }	
-		.sec5-big-box {width: 984px; margin: 0 auto;}
-		.sec5-box {width: 219px; text-align: center; float: left; margin-right: 36px; }
-		.sec5-box:last-child {margin-right: 0;}
-		.sec5-style0 {border: 1px solid #e0e0e0; padding: 12px 7px; }
-		.sec5-style1 {font: 14px "Microsoft Yahei","SimSum",sans-serif; color: #323333; margin: 12px 0 11px; }
-		.sec5-style2 {font: 12px "Microsoft Yahei","SimSum",sans-serif; color: #9f9f9f; }
-		
-		
-		#sec6-div1-left {width: 851px; height: 567px; float: left; background-image: url("images/3-1.png"); }
-		#sec6-div1-right {margin-left: 851px; height: 567px; padding-top: 165px; box-sizing: border-box;}
-		#sec6-div1-right p:nth-child(1) {background-image: url("images/3-1-a.png"); width: 103px; height: 20px; margin: 0 auto 22px;}
-		#sec6-div1-right p:nth-child(2) {font: 12px/30px "SimSum",sans-serif; color:#aaaaaa; width: 289px; margin: 0 auto 40px;}
-		#sec6-div1-right p:nth-child(3) {font: 12px "Microsoft Yahei","SimSum",sans-serif; color:#e25c60; height: 31px; width: 103px; margin: 0 auto 24px; border: 2px solid #e5676a; text-align: center; line-height: 31px; }
-		#sec6-div1-right > div.more-square {overflow: hidden; width: 64px; margin: 0 auto; }
-		#sec6-div1-right > div.more-square > div {width: 12px; height: 12px; border-radius: 50%; box-sizing: border-box; }
-		#sec6-div1-right > div.more-square > div:nth-child(1) {background-color: #919292; float: left;}
-		#sec6-div1-right > div.more-square > div:nth-child(2) {border: 1px solid #9a9a9a; float: left; margin-left: 14px; }
-		#sec6-div1-right > div.more-square > div:nth-child(3) {border: 1px solid #9a9a9a; float: left; margin-left: 14px; }
-		
-		#sec6-div2-right {width: 430px; height: 521px; float: right; background-image: url("images/3-2.png");  }		
-		#sec6-div2-left {margin-right: 430px; height: 521px; }
-		#sec6-div2-left-1 {background-color: #e74f4d; width: 50%; float: left;  text-align: center; padding-top: 173px; box-sizing: border-box; height: 100%; }
-		#sec6-div2-left-2 {background-color: #fff; width: 50%; float: left; text-align: center; padding-top: 173px; box-sizing: border-box; height: 100%; }
-		#sec6-div2-left-1 p:nth-child(1) {font-size: 21px; color: #fff; margin-bottom: 11px; }
-		#sec6-div2-left-1 p:nth-child(2) {font-size: 21px; color: #fff; margin-bottom: 25px; }
-		#sec6-div2-left-1 p:nth-child(3) {width: 31px; height: 2px; background-color: #fff; margin: 0 auto 25px; }
-		#sec6-div2-left-1 p:nth-child(4) {font-size: 21px; color: #fff; width: 167px; height: 41px; line-height: 41px; border: 1px solid #fdf4f4; margin: 0 auto;}
-		#sec6-div2-left-2 p:nth-child(1) {font-size: 21px; color: #323333; margin-bottom: 11px; }
-		#sec6-div2-left-2 p:nth-child(2) {font-size: 21px; color: #323333; margin-bottom: 25px; }
-		#sec6-div2-left-2 p:nth-child(3) {width: 31px; height: 2px; background-color: #aaaaaa; margin: 0 auto 25px; }
-		#sec6-div2-left-2 p:nth-child(4) {font-size: 21px; color: #e74f4d; width: 167px; height: 41px; line-height: 41px; border: 1px solid #e74f4d; margin: 0 auto;}
-		
-		#sec7 {padding: 119px 0 166px;}
-		#sec7-above {text-align: center; margin-bottom: 106px; }
-		#sec7-above p:nth-child(1) {font-size: 21px; color: #323333; margin-bottom: 8px; }
-		#sec7-above p:nth-child(2) {width: 30px; height: 2px; background-color: #ea6563; border-top: 1px solid #fadedd; border-left: 1px solid #fadedd; margin: 0 auto 15px;} 
-		#sec7-above p:nth-child(3) {font: 12px "Microsoft Yahei","SimSum",sans-serif; color: #aaaaaa; width: 421px; margin: 0 auto; }
-		#sec7-content {width: 1006px; margin: 0 auto; }
-		#sec7-left {width: 291px; float: left; margin-right: 75px; }
-		#sec7-right {width: 640px; float: left;}
-		
-		#sec7-left h3 {font-size: 14px; color: #231815; margin-bottom: 27px; font-weight: normal; }
-		#sec7-left p {font: 12px/21px "SimSum",sans-serif; color: #231815;}
-		#sec7-left p.sec7-more {text-align: right; }
-		#sec7-left p.sec7-more a {display: inline-block; width: 41px; background: url("images/4-1.png") no-repeat left center; }
-		#sec7-right input, #sec7-right textarea {box-sizing: border-box; background-color: #ededee; color: #231815; font: 12px "SimSum",sans-serif;}
-		#sec7-right input[type="text"] {width: 311px; height: 40px; margin-bottom: 14px; border: 0; padding: 0 17px; }
-		#sec7-right input[type="text"]:nth-child(2n+1) {margin-right: 18px; }
-		#sec7-right textarea {width: 100%; height: 120px; margin-bottom: 14px; border: 0; padding: 10px 17px; }
-		#sec7-right input[type="submit"] {width: 100%; height: 40px; border: 0; font: 14px "黑体","SimSum",sans-serif; color: #323333;}
-		
-		#footer-top {background: #32353e; color: #fff; padding: 92px 0 72px; text-align: center;}
-		#footer-top h3 {font: 21px "黑体","SimSum",sans-serif; margin-bottom: 11px;}
-		#footer-top p {font: 12px "SimSum",sans-serif; width: 468px; margin: 0 auto 31px;}	
-		#footer-top form {margin-bottom: 37px; }
-		#footer-top input[type="text"] {font: 14px "Microsoft Yahei","SimSum",sans-serif; box-sizing: border-box; width: 430px; height: 41px; border: 1px solid #a5a6aa; padding: 0 9px;}
-		#footer-top input[type="submit"] {font: 15px "Microsoft Yahei","SimSum",sans-serif; color: #fff; box-sizing: border-box; width: 80px; height: 41px; background-color: #6f7178; border: 0;} 
-		#footer-top div img {margin-right: 8px; }
-		#footer-bottom {background: #2f2f38; color: #fff; height: 77px; font: 12px "SimSum",sans-serif; }
-		#footer-bottom span:first-child {float: left; margin: 30px 0 0 98px; }
-		#footer-bottom span:last-child {float: right; margin: 33px 40px 0 0; }
-	</style>
+  <meta charset="UTF-8" />
+  <title>baidu ife stage1-task1</title>
+  <link type="text/css" rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-	<header>
-		<a id="logolink" class="lf" href="#"><img class="vm" src="images/logo.png" alt="logo image" /><span class="vm">新世界</span></a>
-		<a id="loginlink" class="rf" href="#"><img class="vm" src="images/login.png" alt="login icon" /><span class="vm">登录</span></a>
-		<nav class="rf">
-			<ul>
-				<li><a href="#">首页</a></li><!--
-				--><li><a href="#">最新活动</a></li><!--
-				--><li><a href="#">项目介绍</a></li><!--
-				--><li><a href="#">爱心社区</a></li><!--
-				--><li><a href="#">关于我们</a></li>
-			</ul>
-		</nav>
-	</header>
-	<section id="sec1">
-		<div class="musk-layer1"></div>
-		<div id="sec1-content">
-			<p class="sec1-text-style1">Time of new life</p>
-			<p class="sec1-text-style2">新时代，年轻的人们我们一起</p>
-			<p class="sec1-text-style2">体验新生活，享受新生活</p>
-			<p class="sec1-text-style3">开始体验</p>
-		</div>
-	</section>
-	<section id="sec2" class="clearfix">
-		<div class="sec2-div">
-			<img src="images/1-1.png" alt="desc image"/>
-			<p><span>打造全新世界观，让你更爱你的生活</span></p>
-		</div>
-		<div class="sec2-div has-border">
-			<img src="images/1-2.png" alt="desc image"/>
-			<p><span>丰富多彩的公益活动，发挥新世界的主人公意识</span></p>
-		</div>
-		<div class="sec2-div has-border">
-			<img src="images/1-3.png" alt="desc image"/>
-			<p><span>时尚的新理念，超前体验未知的生活</span></p>
-		</div>
-		<div class="sec2-div has-border">
-			<img src="images/1-4.png" alt="desc image"/>
-			<p><span>完善的培养机制，培养你全新的世界观</span></p>
-		</div>
-	</section>
-	<section id="sec3">
-		<img src="images/2-logo.png" alt="big log image" />
-		<p>关于新世界，你不知道的还有什么？</p>		
-	</section>
-	<section id="sec4">
-		<div class="musk-layer2"></div>
-		<div id="sec4-content">
-			<p id="sec4-p1">查找新世界城市活动信息</p>
-			<p id="sec4-p2"></p>
-			<p id="sec4-p3">每个城市的有不同的活动信息，请自主查询您所需要了解的城市</p>
-			<form>
-				<div class="dropdown">
-					<input type="text" placeholder="国家" class="spec-form-control1"  value="中国"/>
-					<span></span>
-					<ul>
-						<!--
+  <header>
+    <a id="logolink" class="lf" href="#"><img class="vm" src="images/logo.png" alt="logo image" /><span class="vm">新世界</span></a>
+    <a id="loginlink" class="rf" href="#"><img class="vm" src="images/login.png" alt="login icon" /><span class="vm">登录</span></a>
+    <nav class="rf">
+      <ul>
+        <li><a href="#">首页</a></li>
+        <!--
+				-->
+        <li><a href="#">最新活动</a></li>
+        <!--
+				-->
+        <li><a href="#">项目介绍</a></li>
+        <!--
+				-->
+        <li><a href="#">爱心社区</a></li>
+        <!--
+				-->
+        <li><a href="#">关于我们</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="sec1">
+    <div class="musk-layer1"></div>
+    <div id="sec1-content">
+      <p class="sec1-text-style1">Time of new life</p>
+      <p class="sec1-text-style2">新时代，年轻的人们我们一起</p>
+      <p class="sec1-text-style2">体验新生活，享受新生活</p>
+      <p class="sec1-text-style3">开始体验</p>
+    </div>
+  </section>
+  <section id="sec2" class="clearfix">
+    <div class="sec2-div">
+      <img src="images/1-1.png" alt="desc image" />
+      <p><span>打造全新世界观，让你更爱你的生活</span></p>
+    </div>
+    <div class="sec2-div has-border">
+      <img src="images/1-2.png" alt="desc image" />
+      <p><span>丰富多彩的公益活动，发挥新世界的主人公意识</span></p>
+    </div>
+    <div class="sec2-div has-border">
+      <img src="images/1-3.png" alt="desc image" />
+      <p><span>时尚的新理念，超前体验未知的生活</span></p>
+    </div>
+    <div class="sec2-div has-border">
+      <img src="images/1-4.png" alt="desc image" />
+      <p><span>完善的培养机制，培养你全新的世界观</span></p>
+    </div>
+  </section>
+  <section id="sec3">
+    <img src="images/2-logo.png" alt="big log image" />
+    <p>关于新世界，你不知道的还有什么？</p>
+  </section>
+  <section id="sec4">
+    <div class="musk-layer2"></div>
+    <div id="sec4-content">
+      <p id="sec4-p1">查找新世界城市活动信息</p>
+      <p id="sec4-p2"></p>
+      <p id="sec4-p3">每个城市的有不同的活动信息，请自主查询您所需要了解的城市</p>
+      <form>
+        <div class="dropdown">
+          <input type="text" placeholder="国家" class="spec-form-control1" value="中国" />
+          <span></span>
+          <ul>
+            <!--
 						<li class="active">中国</li>
 						<li>美国</li>
 						-->
-					</ul>
-				</div><!--				
-				--><div class="dropdown">
-					<input type="text" placeholder="省份" class="spec-form-control1 border-style1"/>
-					<span></span>
-					<ul class="border-style2">
-						<li class="active">北京市</li>
-						<li>天津市</li>
-						<li>河北省</li>
-						<li>陕西省</li>
-						<li>内蒙古自治区</li>
-						<li>辽宁省</li>
-					</ul>
-				</div><!--
-				--><div class="dropdown">
-					<input type="text" placeholder="城市" class="spec-form-control1"/>
-					<span></span>
-					<ul>
-						<!--
+          </ul>
+        </div>
+        <!--				
+				-->
+        <div class="dropdown">
+          <input type="text" placeholder="省份" class="spec-form-control1 border-style1" />
+          <span></span>
+          <ul class="border-style2">
+            <li class="active">北京市</li>
+            <li>天津市</li>
+            <li>河北省</li>
+            <li>陕西省</li>
+            <li>内蒙古自治区</li>
+            <li>辽宁省</li>
+          </ul>
+        </div>
+        <!--
+				-->
+        <div class="dropdown">
+          <input type="text" placeholder="城市" class="spec-form-control1" />
+          <span></span>
+          <ul>
+            <!--
 						<li>海淀区</li>
 						<li class="active">昌平区</li>
 						-->
-					</ul>
-				</div><!--		
-				--><input class="spec-form-control1" type="submit" value="搜      索" />
-			</form>
-		</div>
-	</section>
-	<section id="sec5">
-		<div class="sec5-big-box clearfix">
-		<div class="sec5-box">
-			<div class="sec5-style0">
-				<img src="images/2-a-1.png" alt="actitity image" />
-			</div>
-			<p class="sec5-style1">北京活动</p>
-			<p class="sec5-style2">新社区大联盟</p>				
-		</div>
-		<div class="sec5-box">
-			<p style="font: 20px 'Microsoft Yahei','SimSum',sans-serif; color: #323333;">上&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;海&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;活&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;动</p>
-			<p style="font: 12px 'Microsoft Yahei','SimSum',sans-serif; color: #818181; margin: 8px 0; ">夜上海新景观探索</p>		
-			<div class="sec5-style0">
-				<img src="images/2-a-2.png" alt="actitity image" />
-			</div>
-					
-		</div>
-		<div class="sec5-box">
-			<div class="sec5-style0">
-				<img src="images/2-a-3.png" alt="actitity image" />
-			</div>
-			<p class="sec5-style1">深圳活动</p>
-			<p class="sec5-style2">全新海岸线观点站</p>				
-		</div>
-		<div class="sec5-box">
-			<div class="sec5-style0">
-				<img src="images/2-a-4.png" alt="actitity image" />
-			</div>
-			<p class="sec5-style1">香港活动</p>
-			<p class="sec5-style2">奢侈消费大派送</p>				
-		</div>		
-		</div>
-	</section>
-	<section id="sec6">
-		<div id="sec6-div1" class="clearfix">
-			<div id="sec6-div1-left">
-			</div>
-			<div id="sec6-div1-right">
-				<p></p>
-				<p>新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界</p>
-				<p>更多详情</p>
-				<div class="more-square">
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>		
-			</div>
-		</div>
-		<div id="sec6-div2" class="clearfix">
-			<div id="sec6-div2-right">
-			</div>
-			<div id="sec6-div2-left" class="clearfix">
-				<div id="sec6-div2-left-1">
-					<p>新时代</p>
-					<p>关于爱生活的我们</p>
-					<p></p>
-					<p>查看更多</p>
-				</div>
-				<div id="sec6-div2-left-2">
-					<p>新时代</p>
-					<p>关于爱生活的我们</p>
-					<p></p>
-					<p>查看更多</p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section id="sec7">
-		<div id="sec7-above">
-			<p>成为我们的志愿者</p>
-			<p></p>
-			<p>新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情 那就不要犹豫，快来加入我们，成为改变所有人生活的人 </p>
-		</div>
-		<div id="sec7-content" class="clearfix">		
-		<div id="sec7-left">
-			<h3>新世界志愿者协议</h3>
-			<p>加入新世界志愿者的人员必须遵守中华人民共共和国的 相关法律法规，并且本着平等资源的原则 ......</p>
-			<p class="sec7-more"><a href="#">more</a></p>
-			<h3>新世界志愿者权利</h3>
-			<p>新世界志愿者享受新世界内部所有资源共享的权利，并且享受所在四新世界活动的优先参与资格</p>
-			<p class="sec7-more"><a href="#">more</a></p>
-			<h3>更多条款</h3>
-			<p class="sec7-more"><a href="#">more</a></p>
-		</div>
-		<div id="sec7-right">
-			<form>
-				<input type="text" placeholder="姓名：" /><!--
-				--><input type="text" placeholder="年龄：" /><!--
-				--><input type="text" placeholder="联系方式：" /><!--
-				--><input type="text" placeholder="联系地址：" /><!--
-				--><textarea placeholder="请简单描述您梦想的生活："></textarea><!--
-				--><input type="submit" value="提交申请" />
-			</form>
-		</div>
-		</div>
-	</section>
-	<footer>
-		<div id="footer-top">
-			<h3>联系我们</h3>
-			<p>为了更好的获取我们的最新产品资讯，您可以留下您的电子邮箱快速订购我们的产品资讯也可以通过以下任何方式关注我们动态</p>
-			<form>
-				<input type="text" placeholder="someone@email.com" /><input type="submit" value="提交"/>
-			</form>
-			<div>
-				<img src="images/share-1.png" /><img src="images/share-2.png" /><img src="images/share-3.png" /><img src="images/share-4.png" />
-			</div>
-		</div>
-		<div id="footer-bottom" class="clearfix">
-			<span>&copy;2016新世界</span>
-			<span>Back to top</span>
-		</div>
-	</footer>
+          </ul>
+        </div>
+        <!--		
+				-->
+        <input class="spec-form-control1" type="submit" value="搜      索" />
+      </form>
+    </div>
+  </section>
+  <section id="sec5">
+    <div class="sec5-big-box clearfix">
+      <div class="sec5-box">
+        <div class="sec5-style0">
+          <img src="images/2-a-1.png" alt="actitity image" />
+        </div>
+        <p class="sec5-style1">北京活动</p>
+        <p class="sec5-style2">新社区大联盟</p>
+      </div>
+      <div class="sec5-box">
+        <p style="font: 20px 'Microsoft Yahei','SimSum',sans-serif; color: #323333;">上&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;海&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;活&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;动</p>
+        <p style="font: 12px 'Microsoft Yahei','SimSum',sans-serif; color: #818181; margin: 8px 0; ">夜上海新景观探索</p>
+        <div class="sec5-style0">
+          <img src="images/2-a-2.png" alt="actitity image" />
+        </div>
+      </div>
+      <div class="sec5-box">
+        <div class="sec5-style0">
+          <img src="images/2-a-3.png" alt="actitity image" />
+        </div>
+        <p class="sec5-style1">深圳活动</p>
+        <p class="sec5-style2">全新海岸线观点站</p>
+      </div>
+      <div class="sec5-box">
+        <div class="sec5-style0">
+          <img src="images/2-a-4.png" alt="actitity image" />
+        </div>
+        <p class="sec5-style1">香港活动</p>
+        <p class="sec5-style2">奢侈消费大派送</p>
+      </div>
+    </div>
+  </section>
+  <section id="sec6">
+    <div id="sec6-div1" class="clearfix">
+      <div id="sec6-div1-left">
+      </div>
+      <div id="sec6-div1-right">
+        <p></p>
+        <p>新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界新世界是个新世界 新世界是个新世界新世界是个新世界</p>
+        <p>更多详情</p>
+        <div class="more-square">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <div id="sec6-div2" class="clearfix">
+      <div id="sec6-div2-right">
+      </div>
+      <div id="sec6-div2-left" class="clearfix">
+        <div id="sec6-div2-left-1">
+          <p>新时代</p>
+          <p>关于爱生活的我们</p>
+          <p></p>
+          <p>查看更多</p>
+        </div>
+        <div id="sec6-div2-left-2">
+          <p>新时代</p>
+          <p>关于爱生活的我们</p>
+          <p></p>
+          <p>查看更多</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="sec7">
+    <div id="sec7-above">
+      <p>成为我们的志愿者</p>
+      <p></p>
+      <p>新世界的大家庭需要每一个爱生活的人的加入，如果你够年轻，有梦想，有激情 那就不要犹豫，快来加入我们，成为改变所有人生活的人 </p>
+    </div>
+    <div id="sec7-content" class="clearfix">
+      <div id="sec7-left">
+        <h3>新世界志愿者协议</h3>
+        <p>加入新世界志愿者的人员必须遵守中华人民共共和国的 相关法律法规，并且本着平等资源的原则 ......</p>
+        <p class="sec7-more"><a href="#">more</a></p>
+        <h3>新世界志愿者权利</h3>
+        <p>新世界志愿者享受新世界内部所有资源共享的权利，并且享受所在四新世界活动的优先参与资格</p>
+        <p class="sec7-more"><a href="#">more</a></p>
+        <h3>更多条款</h3>
+        <p class="sec7-more"><a href="#">more</a></p>
+      </div>
+      <div id="sec7-right">
+        <form>
+          <input type="text" placeholder="姓名：" />
+          <!--
+				-->
+          <input type="text" placeholder="年龄：" />
+          <!--
+				-->
+          <input type="text" placeholder="联系方式：" />
+          <!--
+				-->
+          <input type="text" placeholder="联系地址：" />
+          <!--
+				-->
+          <textarea placeholder="请简单描述您梦想的生活："></textarea>
+          <!--
+				-->
+          <input type="submit" value="提交申请" />
+        </form>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div id="footer-top">
+      <h3>联系我们</h3>
+      <p>为了更好的获取我们的最新产品资讯，您可以留下您的电子邮箱快速订购我们的产品资讯也可以通过以下任何方式关注我们动态</p>
+      <form>
+        <input type="text" placeholder="someone@email.com" />
+        <input type="submit" value="提交" />
+      </form>
+      <div>
+        <img src="images/share-1.png" /><img src="images/share-2.png" /><img src="images/share-3.png" /><img src="images/share-4.png" />
+      </div>
+    </div>
+    <div id="footer-bottom" class="clearfix">
+      <span>&copy;2016新世界</span>
+      <span>Back to top</span>
+    </div>
+  </footer>
 </body>
 
 </html>

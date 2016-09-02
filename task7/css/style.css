@@ -1,0 +1,638 @@
+  body {
+    font: 14px '黑体', 'SimSum', sans-serif;
+    width: 100%;
+    min-width: 1280px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  header {
+    height: 57px;
+    background-color: #fff;
+  }
+  
+  #logolink {
+    display: inline-block;
+    height: 57px;
+    margin-left: 59px;
+  }
+  
+  #logolink span {
+    font-size: 21px;
+    line-height: 57px;
+    margin-left: 11px;
+  }
+  
+  header nav {
+    font: 14px 'Microsoft Yahei', 'SimSum', sans-serif;
+    width: 486px;
+  }
+  
+  header nav ul {
+    list-style-type: none;
+  }
+  
+  header nav li {
+    display: inline-block;
+    height: 57px;
+    margin-right: 32px;
+  }
+  
+  header nav a {
+    line-height: 57px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 65px;
+    height: 57px;
+    text-align: center;
+    color: #787b83;
+  }
+  
+  header nav li:first-child a,
+  header nav a:hover {
+    color: #e74f4d;
+    border-bottom: 4px solid #e74f4d;
+  }
+  
+  #loginlink {
+    font: 14px 'Microsoft Yahei', 'SimSum', sans-serif;
+    display: inline-block;
+    height: 57px;
+    margin-right: 67px;
+  }
+  
+  #loginlink span {
+    line-height: 57px;
+    margin-left: 5px;
+    color: #e74f4d;
+  }
+  
+  #sec1 {
+    position: relative;
+    height: 853px;
+    background: url('../images/1.png') no-repeat;
+    background-size: cover;
+  }
+  
+  #sec1 div.musk-layer1 {
+    width: 100%;
+    height: 100%;
+    opacity: .2;
+    background-color: #040000;
+  }
+  
+  #sec1-content {
+    font-family: 'Microsoft YaHei', 'SimSum', sans-serif;
+    position: absolute;
+    top: 227px;
+    left: 117px;
+    color: #fff;
+  }
+  
+  #sec1-content p.sec1-text-style1 {
+    font-size: 60px;
+    line-height: 68px;
+    margin-bottom: 16px;
+  }
+  
+  #sec1-content p.sec1-text-style2 {
+    font-size: 21px;
+    line-height: 28px;
+    margin-left: 8px;
+  }
+  
+  #sec1-content p.sec1-text-style3 {
+    font-size: 30px;
+    line-height: 63px;
+    width: 330px;
+    height: 63px;
+    margin: 65px 0 0 10px;
+    text-align: center;
+    background-color: #e74f4d;
+  }
+  
+  #sec2 {
+    height: 250px;
+    background-color: #fff;
+  }
+  
+  #sec2 .sec2-div {
+    float: left;
+    width: 25%;
+    margin-top: 44px;
+    text-align: center;
+  }
+  
+  #sec2 .sec2-div p {
+    height: 52px;
+    margin-top: 46px;
+  }
+  
+  #sec2 .has-border p {
+    border-left: 2px solid #aaa;
+  }
+  
+  #sec2 .sec2-div p span {
+    display: inline-block;
+    width: 158px;
+  }
+  
+  #sec3 {
+    padding: 89px 0 78px;
+    text-align: center;
+    background-color: #ededec;
+  }
+  
+  #sec3 p {
+    font-size: 53.59px;
+    margin-top: 38px;
+    opacity: .5;
+    color: #323333;
+  }
+  
+  #sec4 {
+    position: relative;
+    height: 341px;
+    background: url('../images/2.png') no-repeat;
+    background-size: cover;
+  }
+  
+  div.musk-layer2 {
+    width: 100%;
+    height: 100%;
+    opacity: .2;
+    background-color: #aa3533;
+  }
+  
+  #sec4-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 53px;
+    text-align: center;
+  }
+  
+  #sec4-p1 {
+    font: 21px 'Microsoft Yahei', 'SimSum', sans-serif;
+    color: #fff;
+  }
+  
+  #sec4-p3 {
+    font: 12px 'Microsoft Yahei', 'SimSum', sans-serif;
+    opacity: .8;
+    color: #fff;
+  }
+  
+  #sec4-p2 {
+    width: 31px;
+    height: 1px;
+    margin: 10px auto 20px;
+    border-top: 1px solid #e8dfdc;
+    border-bottom: 1px solid #e8dfdc;
+    background-color: #fff;
+  }
+  
+  #sec4 form {
+    margin-top: 52px;
+  }
+  
+  .spec-form-control1 {
+    font: 12px 'Microsoft Yahei', 'SimSum', sans-serif;
+    box-sizing: border-box;
+    width: 236px;
+    height: 36px;
+    padding: 6px 10px;
+    color: #a8aaaa;
+    border: 0;
+  }
+  
+  #sec4 input[type='submit'] {
+    font: 14px 'Microsoft Yahei', 'SimSum', sans-serif;
+    color: #fff;
+    background-color: #be4e48;
+  }
+  
+  div.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 236px;
+    height: 36px;
+    margin-right: 29px;
+  }
+  
+  div.dropdown ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    list-style-type: none;
+    text-align: left;
+    background-color: #e4e3e5;
+  }
+  
+  div.dropdown ul li {
+    font: 12px/27px 'Microsoft Yahei', 'SimSum', sans-serif;
+    height: 27px;
+    padding-left: 32px;
+    color: #323333;
+  }
+  
+  div.dropdown ul li.active {
+    color: #fff;
+    background: url('../images/2-1.png') #be4e48 no-repeat 9px 9px;
+  }
+  
+  #sec4 div.dropdown ul li:hover {
+    color: #fff;
+    background: url('../images/2-1.png') #be4e48 no-repeat 9px 9px;
+  }
+  /*
+    #sec4 div.dropdown input:focus  {border: 2px solid #d99d8e;}
+    */
+  
+  .border-style1 {
+    border: 2px solid #d99d8e;
+  }
+  
+  .border-style2 {
+    border: 1px solid #d99d8e;
+  }
+  
+  div.dropdown span {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    display: inline-block;
+    width: 19px;
+    height: 18px;
+    background: url('../images/2-2.png') #be4e48 no-repeat 50%;
+  }
+  
+  #sec5 {
+    padding: 100px 0 114px;
+    background: #f7f7f7;
+  }
+  
+  .sec5-big-box {
+    width: 984px;
+    margin: 0 auto;
+  }
+  
+  .sec5-box {
+    float: left;
+    width: 219px;
+    margin-right: 36px;
+    text-align: center;
+  }
+  
+  .sec5-box:last-child {
+    margin-right: 0;
+  }
+  
+  .sec5-style0 {
+    padding: 12px 7px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .sec5-style1 {
+    font: 14px 'Microsoft Yahei', 'SimSum', sans-serif;
+    margin: 12px 0 11px;
+    color: #323333;
+  }
+  
+  .sec5-style2 {
+    font: 12px 'Microsoft Yahei', 'SimSum', sans-serif;
+    color: #9f9f9f;
+  }
+  
+  #sec6-div1-left {
+    float: left;
+    width: 851px;
+    height: 567px;
+    background-image: url('../images/3-1.png');
+  }
+  
+  #sec6-div1-right {
+    box-sizing: border-box;
+    height: 567px;
+    margin-left: 851px;
+    padding-top: 165px;
+  }
+  
+  #sec6-div1-right p:nth-child(1) {
+    width: 103px;
+    height: 20px;
+    margin: 0 auto 22px;
+    background-image: url('../images/3-1-a.png');
+  }
+  
+  #sec6-div1-right p:nth-child(2) {
+    font: 12px/30px 'SimSum', sans-serif;
+    width: 289px;
+    margin: 0 auto 40px;
+    color: #aaa;
+  }
+  
+  #sec6-div1-right p:nth-child(3) {
+    font: 12px 'Microsoft Yahei', 'SimSum', sans-serif;
+    line-height: 31px;
+    width: 103px;
+    height: 31px;
+    margin: 0 auto 24px;
+    text-align: center;
+    color: #e25c60;
+    border: 2px solid #e5676a;
+  }
+  
+  #sec6-div1-right > div.more-square {
+    overflow: hidden;
+    width: 64px;
+    margin: 0 auto;
+  }
+  
+  #sec6-div1-right > div.more-square > div {
+    box-sizing: border-box;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  
+  #sec6-div1-right > div.more-square > div:nth-child(1) {
+    float: left;
+    background-color: #919292;
+  }
+  
+  #sec6-div1-right > div.more-square > div:nth-child(2) {
+    float: left;
+    margin-left: 14px;
+    border: 1px solid #9a9a9a;
+  }
+  
+  #sec6-div1-right > div.more-square > div:nth-child(3) {
+    float: left;
+    margin-left: 14px;
+    border: 1px solid #9a9a9a;
+  }
+  
+  #sec6-div2-right {
+    float: right;
+    width: 430px;
+    height: 521px;
+    background-image: url('../images/3-2.png');
+  }
+  
+  #sec6-div2-left {
+    height: 521px;
+    margin-right: 430px;
+  }
+  
+  #sec6-div2-left-1 {
+    float: left;
+    box-sizing: border-box;
+    width: 50%;
+    height: 100%;
+    padding-top: 173px;
+    text-align: center;
+    background-color: #e74f4d;
+  }
+  
+  #sec6-div2-left-2 {
+    float: left;
+    box-sizing: border-box;
+    width: 50%;
+    height: 100%;
+    padding-top: 173px;
+    text-align: center;
+    background-color: #fff;
+  }
+  
+  #sec6-div2-left-1 p:nth-child(1) {
+    font-size: 21px;
+    margin-bottom: 11px;
+    color: #fff;
+  }
+  
+  #sec6-div2-left-1 p:nth-child(2) {
+    font-size: 21px;
+    margin-bottom: 25px;
+    color: #fff;
+  }
+  
+  #sec6-div2-left-1 p:nth-child(3) {
+    width: 31px;
+    height: 2px;
+    margin: 0 auto 25px;
+    background-color: #fff;
+  }
+  
+  #sec6-div2-left-1 p:nth-child(4) {
+    font-size: 21px;
+    line-height: 41px;
+    width: 167px;
+    height: 41px;
+    margin: 0 auto;
+    color: #fff;
+    border: 1px solid #fdf4f4;
+  }
+  
+  #sec6-div2-left-2 p:nth-child(1) {
+    font-size: 21px;
+    margin-bottom: 11px;
+    color: #323333;
+  }
+  
+  #sec6-div2-left-2 p:nth-child(2) {
+    font-size: 21px;
+    margin-bottom: 25px;
+    color: #323333;
+  }
+  
+  #sec6-div2-left-2 p:nth-child(3) {
+    width: 31px;
+    height: 2px;
+    margin: 0 auto 25px;
+    background-color: #aaa;
+  }
+  
+  #sec6-div2-left-2 p:nth-child(4) {
+    font-size: 21px;
+    line-height: 41px;
+    width: 167px;
+    height: 41px;
+    margin: 0 auto;
+    color: #e74f4d;
+    border: 1px solid #e74f4d;
+  }
+  
+  #sec7 {
+    padding: 119px 0 166px;
+  }
+  
+  #sec7-above {
+    margin-bottom: 106px;
+    text-align: center;
+  }
+  
+  #sec7-above p:nth-child(1) {
+    font-size: 21px;
+    margin-bottom: 8px;
+    color: #323333;
+  }
+  
+  #sec7-above p:nth-child(2) {
+    width: 30px;
+    height: 2px;
+    margin: 0 auto 15px;
+    border-top: 1px solid #fadedd;
+    border-left: 1px solid #fadedd;
+    background-color: #ea6563;
+  }
+  
+  #sec7-above p:nth-child(3) {
+    font: 12px 'Microsoft Yahei', 'SimSum', sans-serif;
+    width: 421px;
+    margin: 0 auto;
+    color: #aaa;
+  }
+  
+  #sec7-content {
+    width: 1006px;
+    margin: 0 auto;
+  }
+  
+  #sec7-left {
+    float: left;
+    width: 291px;
+    margin-right: 75px;
+  }
+  
+  #sec7-right {
+    float: left;
+    width: 640px;
+  }
+  
+  #sec7-left h3 {
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 27px;
+    color: #231815;
+  }
+  
+  #sec7-left p {
+    font: 12px/21px 'SimSum', sans-serif;
+    color: #231815;
+  }
+  
+  #sec7-left p.sec7-more {
+    text-align: right;
+  }
+  
+  #sec7-left p.sec7-more a {
+    display: inline-block;
+    width: 41px;
+    background: url('../images/4-1.png') no-repeat left center;
+  }
+  
+  #sec7-right input,
+  #sec7-right textarea {
+    font: 12px 'SimSum', sans-serif;
+    box-sizing: border-box;
+    color: #231815;
+    background-color: #ededee;
+  }
+  
+  #sec7-right input[type='text'] {
+    width: 311px;
+    height: 40px;
+    margin-bottom: 14px;
+    padding: 0 17px;
+    border: 0;
+  }
+  
+  #sec7-right input[type='text']:nth-child(2n+1) {
+    margin-right: 18px;
+  }
+  
+  #sec7-right textarea {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 14px;
+    padding: 10px 17px;
+    border: 0;
+  }
+  
+  #sec7-right input[type='submit'] {
+    font: 14px '黑体', 'SimSum', sans-serif;
+    width: 100%;
+    height: 40px;
+    color: #323333;
+    border: 0;
+  }
+  
+  #footer-top {
+    padding: 92px 0 72px;
+    text-align: center;
+    color: #fff;
+    background: #32353e;
+  }
+  
+  #footer-top h3 {
+    font: 21px '黑体', 'SimSum', sans-serif;
+    margin-bottom: 11px;
+  }
+  
+  #footer-top p {
+    font: 12px 'SimSum', sans-serif;
+    width: 468px;
+    margin: 0 auto 31px;
+  }
+  
+  #footer-top form {
+    margin-bottom: 37px;
+  }
+  
+  #footer-top input[type='text'] {
+    font: 14px 'Microsoft Yahei', 'SimSum', sans-serif;
+    box-sizing: border-box;
+    width: 430px;
+    height: 41px;
+    padding: 0 9px;
+    border: 1px solid #a5a6aa;
+  }
+  
+  #footer-top input[type='submit'] {
+    font: 15px 'Microsoft Yahei', 'SimSum', sans-serif;
+    box-sizing: border-box;
+    width: 80px;
+    height: 41px;
+    color: #fff;
+    border: 0;
+    background-color: #6f7178;
+  }
+  
+  #footer-top div img {
+    margin-right: 8px;
+  }
+  
+  #footer-bottom {
+    font: 12px 'SimSum', sans-serif;
+    height: 77px;
+    color: #fff;
+    background: #2f2f38;
+  }
+  
+  #footer-bottom span:first-child {
+    float: left;
+    margin: 30px 0 0 98px;
+  }
+  
+  #footer-bottom span:last-child {
+    float: right;
+    margin: 33px 40px 0 0;
+  }
